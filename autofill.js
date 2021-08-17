@@ -1,4 +1,14 @@
 var autoFill = function(){
+  if (typeof jQuery == 'undefined') {
+    var script = document.createElement("SCRIPT");
+    script.src = 'https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js';
+    script.type = 'text/javascript';
+    script.onload = function() {
+        var $ = window.jQuery;
+        // Use $ here...
+    };
+    document.getElementsByTagName("head")[0].appendChild(script);
+  }
   var $form = $('form:visible');
   var inputs = $form.find('input, select');
   $.each(inputs, function(key, value){
